@@ -1,0 +1,45 @@
+# Byte-compiled / Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+env/
+venv/
+.venv/
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# SQLite database (örnek)
+*.db
+*.sqlite3
+
+# Environment variables
+.env
+.env.*
+
+# Python packaging
+*.egg-info/
+dist/
+build/
+
+# Mypy / type checkers
+.mypy_cache/
+.dmypy.json
+
+# Coverage
+htmlcov/
+.coverage
+
+# Pydantic generated files
+*.pyi
