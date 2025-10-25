@@ -2,9 +2,11 @@
 
 from sqlalchemy import Column, Date, DateTime, ForeignKey, Integer, String, Enum
 from datetime import datetime
+from sqlalchemy.orm import relationship
 
 from ..database import Base
 from .enums import Gender
+from ..post.models import post_likes, Post
 
 class User(Base):
     __tablename__ = "users"
@@ -22,3 +24,8 @@ class User(Base):
     profile_pic = Column(String) #Görselin linkini saklayacak
     biography = Column(String)
     location = Column(String)
+
+    #Relation
+    posts = relationship(Post, back_populates="author")
+
+    liked_posts = relationship(Post, secondary=post_likes , back_populates="liked_by_users")

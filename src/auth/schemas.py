@@ -28,7 +28,7 @@ class UserUpdate(BaseModel): #Kullanıcı bilgileri güncellenmek istenirse sade
 
 class User(UserBase):
     id: int
-    created_time: datetime
+    created_dt: datetime
 
     class Config:
         orm_mode = True #sayesinde SQLAlchemy modelinden (DB’den) direkt User Pydantic modeline veri çekebiliriz.

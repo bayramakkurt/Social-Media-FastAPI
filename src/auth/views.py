@@ -62,7 +62,13 @@ async def current_user(token: str, db: Session = Depends(get_db)):
 @router.put("/{username}", status_code=status.HTTP_204_NO_CONTENT)
 async def update_user(username: str, token: str, user_update: UserUpdate, db: Session = Depends(get_db)):
     db_user = await get_current_user(db, token)
-    if db_user.username != username:
+    if db_user is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Kullanıcı bulunamadı veya token geçersiz."
+        )
+
+    if db_user.username != username.lower():
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Bu kullanıcıyı güncellemeye yetkili değilsiniz."

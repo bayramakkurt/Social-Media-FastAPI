@@ -91,7 +91,7 @@ async def authenticate(db: Session, username: str, password: str):
         return None
     
     # Şifreyi kontrol et
-    if not verify_password(password, db_user.hashed_password):
+    if not bcrypt_context.verify(password, db_user.hashed_password):
         return None
     
     return db_user
